@@ -1,10 +1,13 @@
 import express, { NextFunction, Request, Response } from "express";
+import path from "path";
+import { __dirname } from "../app.js";
 
 const route = express.Router();
 
-route.get("/", (req: Request, res: Response, next: NextFunction) => {
-  console.log("main route handler");
-  res.send("<h1>hello from express</h1>");
+route.get("/", (req: Request, res: Response) => {
+  console.log("main route handler", __dirname);
+
+  res.sendFile(path.join("views", "index.html"), { root: "./src" });
 });
 
 export default route;
