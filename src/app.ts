@@ -13,6 +13,8 @@ const app: Express = express();
 export const __filename = fileURLToPath(import.meta.url);
 export const __dirname = dirname(__filename);
 
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "..", "src", "views"));
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(express.static(path.join(__dirname, "..", "public")));
@@ -21,7 +23,8 @@ app.use(publicRoute);
 app.use("/admin", adminRoute);
 
 app.use((req, res) => {
-  res.sendFile(path.join("views", "404.html"), { root: "./src" });
+  // res.sendFile(path.join("views", "404.html"), { root: "./src" });
+  res.render("404.ejs", { pageTitle: "404 Page" });
 });
 
 app.listen(port, () => {
