@@ -4,21 +4,27 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Todo Main page</title>
+    <title>Add Todo</title>
     <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="/styles/add-todo.css" />
   </head>
   <body>
     <header class="header">
       <nav class="header__nav">
         <ul>
-          <li><a href="/" class="active">Todo</a></li>
-          <li><a href="/admin/add-todo">Add Todo</a></li>
+          <li><a href="/">Todo</a></li>
+          <li><a href="/admin/add-todo" class="active">Add Todo</a></li>
         </ul>
       </nav>
     </header>
     <main>
-      <h1 class="welcome-message">Welcome to Todo app</h1>
-      <h3>todo List !</h3>
+      <form>
+        <div>
+          <label for="todo">Todo:</label>
+          <input id="todo" type="text" name="todo" />
+        </div>
+        <button type="submit">Add todo</button>
+      </form>
     </main>
   </body>
 </html>
