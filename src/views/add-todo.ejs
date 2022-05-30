@@ -1,22 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Add Todo</title>
-    <link rel="stylesheet" href="/css/main.css" />
+<%- include('includes/head.ejs') %> 
     <link rel="stylesheet" href="/css/add-todo.css" />
   </head>
   <body>
-    <header class="header">
-      <nav class="header__nav">
-        <ul>
-          <li><a href="/">Todo</a></li>
-          <li><a href="/admin/add-todo" class="active">Add Todo</a></li>
-        </ul>
-      </nav>
-    </header>
+    <%- include('includes/nav.ejs') %> 
     <main>
       <form action="/admin/add-todo" method="POST">
         <div class="main__div__title">
@@ -29,7 +15,7 @@
           />
         </div>
         <div class="main__div__description">
-          <label for="todo" class="main__div__description__label"
+          <label for="todoDescription" class="main__div__description__label"
             >Todo Description:</label
           >
           <textarea
@@ -37,10 +23,10 @@
             cols="20"
             rows="2"
             class="main__div__description__textarea"
+            id="todoDescription"
           ></textarea>
         </div>
         <button type="submit">Add todo</button>
       </form>
     </main>
-  </body>
-</html>
+    <%- include('includes/footer.ejs') %> 
