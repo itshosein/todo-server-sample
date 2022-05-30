@@ -20,6 +20,10 @@ app.use(express.static(path.join(__dirname, "..", "public")));
 app.use(publicRoute);
 app.use("/admin", adminRoute);
 
+app.use((req, res) => {
+  res.sendFile(path.join("views", "404.html"), { root: "./src" });
+});
+
 app.listen(port, () => {
   console.log("app started at port", port);
 });

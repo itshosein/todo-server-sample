@@ -5,11 +5,12 @@ main form {
   align-items: center;
 }
 
-main form div {
+.main__div__title,
+.main__div__description {
   width: 70%;
 }
 
-main form label {
+.main__div__title__label {
   display: block;
   margin-bottom: 1rem;
 }
@@ -45,4 +46,20 @@ main form button[type="submit"]:hover {
   background-color: white;
   color: #7b4fb5;
   border: 1px solid #40a155;
+}
+
+.main__div__description__label {
+  display: block;
+  margin: 1rem 0;
+}
+
+.main__div__description__textarea {
+  border: none;
+  border: 1px solid #40a155;
+  border-radius: 5px;
+  outline: none;
+  padding: 0.5rem;
+  width: 100%;
+  font-size: 1rem;
+  transition: all 0.1s;
 }

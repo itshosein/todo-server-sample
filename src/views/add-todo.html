@@ -18,10 +18,26 @@
       </nav>
     </header>
     <main>
-      <form>
-        <div>
-          <label for="todo">Todo:</label>
-          <input id="todo" type="text" name="todo" />
+      <form action="/admin/add-todo" method="POST">
+        <div class="main__div__title">
+          <label for="todo" class="main__div__title__label">Todo Title:</label>
+          <input
+            id="todo"
+            type="text"
+            name="todoTitle"
+            class="main__div__title__input"
+          />
+        </div>
+        <div class="main__div__description">
+          <label for="todo" class="main__div__description__label"
+            >Todo Description:</label
+          >
+          <textarea
+            name="todoDescription"
+            cols="20"
+            rows="2"
+            class="main__div__description__textarea"
+          ></textarea>
         </div>
         <button type="submit">Add todo</button>
       </form>
