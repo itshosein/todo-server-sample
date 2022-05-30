@@ -6,7 +6,7 @@ const route = express.Router();
 
 route.get("/add-todo", (req, res) => {
   // res.sendFile(path.join("views", "add-todo.html"), { root: "./src" });
-  res.render("add-todo", {pageTitle: "add todos"})
+  res.render("add-todo", {pageTitle: "add todos",path: "/admin/add-todo"})
 });
 
 route.post("/add-todo", (req, res, next) => {

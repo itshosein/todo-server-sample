@@ -42,13 +42,3 @@
 .header__nav ul li a.active {
   color: #7b4fb5;
 }
-
-main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-main .welcome-message {
-  margin-bottom: 2rem;
-}
