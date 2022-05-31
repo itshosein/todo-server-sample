@@ -14,6 +14,8 @@ export const __dirname = dirname(__filename);
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "..", "src", "views"));
+app.set('trust proxy', true);
+
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(express.static(path.join(__dirname, "..", "public")));
@@ -23,7 +25,7 @@ app.use("/admin", adminRoute);
 
 app.use((req, res) => {
   // res.sendFile(path.join("views", "404.html"), { root: "./src" });
-  res.render("404.ejs", { pageTitle: "404 Page" });
+  res.render("404.ejs", { pageTitle: "404 Page",path:"" });
 });
 
 app.listen(port, () => {
