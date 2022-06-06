@@ -1,8 +1,13 @@
 <header class="header">
   <nav class="header__nav">
     <ul>
-      <li><a href="/" class="<%= path === '/' ? 'active' : ''  %>">Todo</a></li>
-      <li><a href="/admin/add-todo" class="<%= path === '/admin/add-todo' ? 'active' : ''  %>">Add Todo</a></li>
+      <a href="/" class="<%= path === '/' ? 'active' : '' %>"><li>Todo</li></a>
+      <a
+        href="/admin/add-todo"
+        class="<%= path === '/admin/add-todo' ? 'active' : '' %>"
+      >
+        <li>Add Todo</li>
+      </a>
     </ul>
   </nav>
 </header>

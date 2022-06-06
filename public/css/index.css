@@ -13,7 +13,7 @@ main .welcome-message {
 .main-section__list-container {
   width: 80%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   margin-top: 1rem;
@@ -61,7 +61,8 @@ main .welcome-message {
   width: 100%;
 }
 
-.main-section__list-item__title-dynamic {
+.main-section__list-item__title-dynamic,
+.main-section__list-item__desc-dynamic {
   width: 100%;
   align-content: flex-start;
 }

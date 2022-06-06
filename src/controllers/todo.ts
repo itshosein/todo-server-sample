@@ -5,18 +5,12 @@ const getTodos = (req: Request, res: Response) => {
   // console.log("main route handler", __dirname);
   // res.sendFile(path.join("views", "index.html"), { root: "./src" });
   const ip = req.headers["x-forwarded-for"] || req.socket.remoteAddress || null;
-  const todos = Todo.fetchAllTodos();
-  console.log(todos);
-  
-  res.render("index", {
-    pageTitle: "Todo App",
-    path: "/",
-    todos: [
-      {
-        title: "test1",
-        desc: "test1 test2 yd qiuw hqdwd",
-      },
-    ],
+  Todo.fetchAllTodos((todos) => {
+    res.render("index", {
+      pageTitle: "Todo App",
+      path: "/",
+      todos: todos,
+    });
   });
 };
 
@@ -26,14 +20,19 @@ const getAddTodoPage = (req: Request, res: Response) => {
 };
 
 const saveTodo = (req: Request, res: Response) => {
-  console.log("todo", req.body);
-  const todo = new Todo(req.body.title, req.body.desc);
-  todo.save();
-  if (!req.body.todoTitle) {
-    res.status(404);
-  } else {
-    res.redirect("/");
-  }
+  const todo = new Todo(req.body.todoTitle, req.body.todoDescription);
+
+  todo.save((err: Error | null) => {
+    if (err) {
+      console.log(err);
+      return;
+    }
+    if (!req.body.todoTitle) {
+      res.status(404);
+    } else {
+      res.redirect("/");
+    }
+  });
 };
 
 export default {

@@ -1,7 +1,10 @@
 import fs from "fs";
-import { __dirname } from "../app";
-import path from "path";
-const pathToFile = path.join(__dirname, "data", "todos.json");
+import path, { dirname } from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const pathToFile = path.join(__dirname, "..", "..", "data", "todos.json");
 
 export default class Todo {
   constructor(private _title: string, private _desc: string) {}
@@ -24,34 +27,35 @@ export default class Todo {
     this._desc = t;
   }
 
-  public save() {
+  public save(afterSave: (err: Error | null) => void) {
     let todos: Todo[] = [];
     fs.readFile(pathToFile, (err, data) => {
       if (err) {
+        console.log("read Error", err);
         return;
       }
-      console.log(data);
-      
-      // todos = JSON.parse(data);
-    });
-    todos.push(this);
-    fs.writeFile(pathToFile,JSON.stringify(todos),null,(err) => {
-      if (err) {
-        console.log(err);
+
+      if (data.length) {
+        todos = JSON.parse(data.toString());
       }
-    })
+      todos.push(this);
+      console.log("JSON", JSON.stringify(todos));
+
+      fs.writeFile(pathToFile, JSON.stringify(todos), afterSave);
+    });
   }
 
-  public static fetchAllTodos(): Todo[] {
+  public static fetchAllTodos(withTodos: (todos: Todo[]) => void): Todo[] {
     let todos: Todo[] = [];
 
     fs.readFile(pathToFile, (err, data) => {
-      if (err) {
+      if (err && data.length) {
         return;
       }
-      console.log(data);
-      
-      // todos = JSON.parse(data);
+      todos = JSON.parse(data.toString());
+      if (typeof withTodos === "function") {
+        withTodos(todos);
+      }
     });
     return todos;
   }
