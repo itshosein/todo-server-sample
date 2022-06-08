@@ -39,7 +39,7 @@ these challenges solved using
 1. Clone the repo
 
    ```sh
-   git clone git@github.com:itshosein/typescript-codewar-challenges.git
+   git clone git@github.com:itshosein/todo-server-sample.git
    ```
 
 2. Install NPM packages
