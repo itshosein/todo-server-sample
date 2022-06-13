@@ -67,3 +67,8 @@ main .welcome-message {
   min-height: 20px;
   align-content: flex-start;
 }
+
+.main-section__list-container__empty--state__div h1{
+  font-size: 2rem;
+  color: var(--dark-red);
+}

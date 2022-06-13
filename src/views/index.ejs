@@ -18,8 +18,13 @@
               <p class="main-section__list-item__desc-dynamic"><%= todo._desc %></p>
             </article>
           <% }) %>
-        <% } %>
+        <% } else { %>
         
+          <div class="main-section__list-container__empty--state__div">
+            <h1>No todo Found yet</h1>
+          </div>
+        <% } %>
+
         </section>
     </main>
     <%- include('includes/footer.ejs') %> 
