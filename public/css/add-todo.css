@@ -63,3 +63,11 @@ main form button[type="submit"]:hover {
   font-size: 1rem;
   transition: all 0.1s;
 }
+
+.main__div__error-message {
+  width: 100%;
+  color: var(--dark-red);
+  text-align: center;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+}
