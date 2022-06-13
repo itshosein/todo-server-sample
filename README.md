@@ -26,7 +26,7 @@ Ultimately you can login and manage your todos but the app is under ***developme
 
 <div id="built-with"></div>
 
-these challenges solved using 
+the app developed with these key technologies
 
 - [ExpressJs](https://expressjs.com/)
 - [Typescript](https://styled-components.com/)
@@ -39,7 +39,7 @@ these challenges solved using
 1. Clone the repo
 
    ```sh
-   git clone git@github.com:itshosein/typescript-codewar-challenges.git
+   git clone git@github.com:itshosein/todo-server-sample.git
    ```
 
 2. Install NPM packages
