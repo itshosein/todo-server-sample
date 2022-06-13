@@ -49,7 +49,8 @@ export default class Todo {
     let todos: Todo[] = [];
 
     fs.readFile(pathToFile, (err, data) => {
-      if (err && data.length) {
+      if (err || !data.length) {
+        withTodos([]);
         return;
       }
       todos = JSON.parse(data.toString());
