@@ -16,10 +16,16 @@ const getTodos = (req: Request, res: Response) => {
 
 const getAddTodoPage = (req: Request, res: Response) => {
   // res.sendFile(path.join("views", "add-todo.html"), { root: "./src" });
-  res.render("add-todo", { pageTitle: "add todos", path: "/admin/add-todo" });
+  console.log("req.query" ,req.query);
+  res.render("add-todo", { pageTitle: "add todos", path: "/admin/add-todo", submitError: req.query.submitError });
 };
 
 const saveTodo = (req: Request, res: Response) => {
+  if (!req.body.todoTitle) {
+    res.status(404);
+    res.redirect("/admin/add-todo?submitError=Todo Title not found!");
+    return;
+  }
   const todo = new Todo(req.body.todoTitle, req.body.todoDescription);
 
   todo.save((err: Error | null) => {
@@ -27,11 +33,7 @@ const saveTodo = (req: Request, res: Response) => {
       console.log(err);
       return;
     }
-    if (!req.body.todoTitle) {
-      res.status(404);
-    } else {
-      res.redirect("/");
-    }
+    res.redirect("/");
   });
 };
 
