@@ -44,7 +44,6 @@ main {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin-left: 1rem;
   background-color: var(--dark-blue);
 }
 .header__nav ul a li {
