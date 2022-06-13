@@ -17,7 +17,7 @@ main form {
 
 main form input[type="text"] {
   border: none;
-  border-bottom: 1px solid #40a155;
+  border-bottom: 1px solid var(--dark-red);
   outline: none;
   width: 100%;
   padding-bottom: 0.5rem;
@@ -26,7 +26,7 @@ main form input[type="text"] {
 }
 
 main form input[type="text"]:focus {
-  border: 1px solid #40a155;
+  border: 1px solid var(--dark-red);
   padding: 0.5rem;
   border-radius: 5px;
 }
@@ -44,8 +44,8 @@ main form button[type="submit"] {
 
 main form button[type="submit"]:hover {
   background-color: white;
-  color: #7b4fb5;
-  border: 1px solid #40a155;
+  color: var(--dark-blue);
+  border: 1px solid var(--dark-red);
 }
 
 .main__div__description__label {
@@ -55,7 +55,7 @@ main form button[type="submit"]:hover {
 
 .main__div__description__textarea {
   border: none;
-  border: 1px solid #40a155;
+  border: 1px solid var(--dark-red);
   border-radius: 5px;
   outline: none;
   padding: 0.5rem;

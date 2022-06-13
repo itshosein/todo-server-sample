@@ -1,12 +1,7 @@
 
-main {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
+
 main .welcome-message {
+  margin-top: 3rem;
   margin-bottom: 2rem;
 }
 
@@ -22,14 +17,15 @@ main .welcome-message {
 
 .main-section__list-item {
   width: 20%;
+  max-height: 400px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   padding: 1rem;
   margin: 1rem;
-  box-shadow: 0 0 10px #40a155;
-  border-radius: 10px;
+  box-shadow: 0 0 5px var(--dark-red);
+  border-radius: 5px;
 }
 
 @media (max-width: 830px) {
@@ -40,6 +36,10 @@ main .welcome-message {
 @media (max-width: 630px) {
   .main-section__list-item {
     width: 100%;
+  }
+  .main-section__list-container {
+    width: 100%;
+    padding: 0.5rem;
   }
 }
 
@@ -64,5 +64,6 @@ main .welcome-message {
 .main-section__list-item__title-dynamic,
 .main-section__list-item__desc-dynamic {
   width: 100%;
+  min-height: 20px;
   align-content: flex-start;
 }
