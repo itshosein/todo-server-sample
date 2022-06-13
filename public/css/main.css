@@ -30,6 +30,8 @@ main {
   height: 60px;
   margin-bottom: 0.5rem;
   background-color: var(--dark-blue);
+  position: sticky;
+  top: 0;
 }
 .header__nav {
   width: 100%;
