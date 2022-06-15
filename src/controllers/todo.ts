@@ -5,12 +5,12 @@ const getTodos = (req: Request, res: Response) => {
   // console.log("main route handler", __dirname);
   // res.sendFile(path.join("views", "index.html"), { root: "./src" });
   const ip = req.headers["x-forwarded-for"] || req.socket.remoteAddress || null;
-  Todo.fetchAllTodos((todos) => {
-    res.render("index", {
-      pageTitle: "Todo App",
-      path: "/",
-      todos: todos,
-    });
+  let todos = Todo.getAllTodos();
+
+  res.render("index", {
+    pageTitle: "Todo App",
+    path: "/",
+    todos: todos,
   });
 };
 

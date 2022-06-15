@@ -39,38 +39,40 @@ export default class Todo {
   }
 
   public save(afterSave: (err: Error | null) => void) {
-    let todos: Todo[] = [];
+    let todos: { id: string; title: string; desc: string }[] = [];
     fs.readFile(pathToFile, (err, data) => {
       if (err) {
         return;
       }
-
       if (data.length) {
         todos = JSON.parse(data.toString());
       }
-      todos.push(this);
+      todos.push({
+        title: this.title,
+        desc: this.desc,
+        id: this.id
+      });
       fs.writeFile(pathToFile, JSON.stringify(todos), afterSave);
     });
   }
 
-  public static fetchAllTodos(withTodos: (todos: Todo[]) => void): Todo[] {
+  public static getAllTodos(): Todo[] {
     let todos: Todo[] = [];
-
     fs.readFile(pathToFile, (err, data) => {
       if (err || !data.length) {
-        withTodos([]);
         return;
       }
       todos = JSON.parse(data.toString());
-      if (typeof withTodos === "function") {
-        withTodos(todos);
-      }
     });
     return todos;
   }
 
-  
-  public deleteTodo() {
-    
-  }
+  // public deleteTodo(id: string) {
+  //   let todo: Todo|null = null;
+  //   fs.readFile(pathToFile, (err,data) => {
+
+  //   });
+
+
+  // }
 }
