@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import Todo from "../models/todo.js";
+import Todo from "../models/Todo.js";
 
 const getTodos = (req: Request, res: Response) => {
   // console.log("main route handler", __dirname);

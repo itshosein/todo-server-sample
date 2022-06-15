@@ -1,13 +1,17 @@
 import fs from "fs";
 import path, { dirname } from "path";
 import { fileURLToPath } from "url";
+import uniqId from "uniqid";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const pathToFile = path.join(__dirname, "..", "..", "data", "todos.json");
 
 export default class Todo {
-  constructor(private _title: string, private _desc: string) {}
+  private _id: string;
+  constructor(private _title: string, private _desc: string) {
+    this._id = uniqId();
+  }
 
   public get title(): string {
     return this._title;
@@ -27,11 +31,17 @@ export default class Todo {
     this._desc = t;
   }
 
+  public get id(): string {
+    return this._id;
+  }
+  public set id(id: string) {
+    this._id = id;
+  }
+
   public save(afterSave: (err: Error | null) => void) {
     let todos: Todo[] = [];
     fs.readFile(pathToFile, (err, data) => {
       if (err) {
-        console.log("read Error", err);
         return;
       }
 
@@ -39,8 +49,6 @@ export default class Todo {
         todos = JSON.parse(data.toString());
       }
       todos.push(this);
-      console.log("JSON", JSON.stringify(todos));
-
       fs.writeFile(pathToFile, JSON.stringify(todos), afterSave);
     });
   }
@@ -59,5 +67,10 @@ export default class Todo {
       }
     });
     return todos;
+  }
+
+  
+  public deleteTodo() {
+    
   }
 }
