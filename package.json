@@ -2,15 +2,17 @@
   "name": "todo-server-sample",
   "version": "1.0.0",
   "description": "server for todo sample",
-  "main": "/dist/app.js",
+  "main": "./build/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "tsc",
-    "start": "node ./dist/app.js ",
-    "start-watch": "nodemon ./dist/app.js",
+    "start": "node ./build/app.js ",
+    "start-watch": "nodemon ./build/app.js",
     "watch-ts": "tsc -w"
   },
-  "engines": { "node": "16.13.1","typescript": "4.7.2" },
+  "engines": {
+    "node": "16.13.1"
+  },
   "type": "module",
   "repository": {
     "type": "git",
