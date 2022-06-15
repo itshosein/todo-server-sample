@@ -8,4 +8,7 @@ route.get("/add-todo", todoController.getAddTodoPage);
 
 route.post("/add-todo", todoController.saveTodo);
 
+route.delete("/delete-todo/:id", todoController.deleteTodo);
+
+
 export default route;

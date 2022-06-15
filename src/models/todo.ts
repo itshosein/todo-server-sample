@@ -40,39 +40,60 @@ export default class Todo {
 
   public save(afterSave: (err: Error | null) => void) {
     let todos: { id: string; title: string; desc: string }[] = [];
-    fs.readFile(pathToFile, (err, data) => {
-      if (err) {
-        return;
-      }
-      if (data.length) {
-        todos = JSON.parse(data.toString());
-      }
-      todos.push({
-        title: this.title,
-        desc: this.desc,
-        id: this.id
-      });
-      fs.writeFile(pathToFile, JSON.stringify(todos), afterSave);
+    Todo.getAllTodos((todos: Todo[]) => {
+      todos = todos;
     });
+    todos.push({
+      title: this.title,
+      desc: this.desc,
+      id: this.id,
+    });
+    fs.writeFile(pathToFile, JSON.stringify(todos), afterSave);
   }
 
-  public static getAllTodos(): Todo[] {
+  public static getAllTodos(withTodo: (todos: Todo[]) => void) {
     let todos: Todo[] = [];
     fs.readFile(pathToFile, (err, data) => {
       if (err || !data.length) {
+        withTodo([]);
         return;
       }
       todos = JSON.parse(data.toString());
+      withTodo(todos);
+      return;
     });
-    return todos;
   }
 
-  // public deleteTodo(id: string) {
-  //   let todo: Todo|null = null;
-  //   fs.readFile(pathToFile, (err,data) => {
+  public static saveAll(todos: Todo[], afterSave: (err: Error | null) => void) {
+    Todo.getAllTodos((savedTodo: Todo[]) => {
+      todos = [...todos, ...savedTodo];
+    });
+    fs.writeFile(pathToFile, JSON.stringify(todos), afterSave);
+  }
 
-  //   });
+  public static getTodoById(id: string, withTodo: (todo: Todo) => void) {
+    Todo.getAllTodos((todos) => {
+      if (todos?.length) {
+        let todo: Todo = todos.filter((todo) => todo.id === id)[0];
+        withTodo(todo);
+      }
+    });
+  }
 
-
-  // }
+  public static deleteTodo(id: string,deletedCallback: (isDone: boolean) => void) {
+    let todosDeleted: Todo[] | null = null;
+    Todo.getAllTodos((todos) => {
+      if (todos?.length) {
+        todosDeleted = todos.filter((todo) => todo.id !== id);
+        Todo.saveAll(todosDeleted, (err) => {
+          if (err) {
+            deletedCallback(false);
+            console.log(err);
+            return;
+          }
+          deletedCallback(true);
+        });
+      }
+    });
+  }
 }
