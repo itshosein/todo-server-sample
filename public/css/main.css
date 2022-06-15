@@ -83,6 +83,7 @@ main {
   margin-top: 5rem;
   position: absolute;
   bottom: 0;
+  padding: 1rem;
 }
 .footer h2 {
   font-size: 1.5rem;
