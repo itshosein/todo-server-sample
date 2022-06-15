@@ -6,8 +6,8 @@ import { dirname } from "path";
 import publicRoute from "./routes/public.js";
 import adminRoute from "./routes/admin.js";
 
-const port = 3000;
-const app: Express = express();
+const port = process.env.PORT || 3000;
+const app: Express =  express();
 
 export const __filename = fileURLToPath(import.meta.url);
 export const __dirname = dirname(__filename);
