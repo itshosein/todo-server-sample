@@ -43,7 +43,13 @@ const saveTodo = (req: Request, res: Response) => {
 
 const deleteTodo = (req: Request, res: Response) => {
   console.log(req.params);
-  // Todo.deleteTodo(req.params.id);
+  if (req.params.id) {
+    Todo.deleteTodo(req.params.id,(isDone) =>{
+      if (isDone) {
+        res.redirect("/");
+      }
+    });
+  }
 }
 
 export default {
