@@ -10,7 +10,7 @@
     "start-watch": "nodemon ./dist/app.js",
     "watch-ts": "tsc -w"
   },
-  "engines": { "node": "16.13.1" },
+  "engines": { "node": "16.13.1","typescript": "4.7.2" },
   "type": "module",
   "repository": {
     "type": "git",
