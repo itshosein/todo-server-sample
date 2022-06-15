@@ -33,6 +33,11 @@ main .welcome-message {
   right: 1rem;
   display: flex;
 }
+.main-section__list-item__icon-holder a {
+  text-decoration: none;
+  color: inherit;
+}
+
 
 .main-section__list-item__edit-icon {
   border-radius: 50%;
