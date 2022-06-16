@@ -1,11 +1,8 @@
 import fs from "fs";
-import path, { dirname } from "path";
-import { fileURLToPath } from "url";
+import path from "path";
 import uniqId from "uniqid";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-const pathToFile = path.join(__dirname, "..", "..", "data", "todos.json");
+const pathToFile = path.join(__dirname, "..", "data", "todos.json");
 
 export default class Todo {
   private _id: string;
@@ -52,6 +49,8 @@ export default class Todo {
   }
 
   public static getAllTodos(withTodo: (todos: Todo[]) => void) {
+    console.log(pathToFile);
+    
     let todos: Todo[] = [];
     fs.readFile(pathToFile, (err, data) => {
       if (err || !data.length) {

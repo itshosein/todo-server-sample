@@ -1,17 +1,12 @@
 import express, { Express } from "express";
 import bodyParser from "body-parser";
 import path from "path";
-import { fileURLToPath } from "url";
-import { dirname } from "path";
 import publicRoute from "./routes/public";
 import adminRoute from "./routes/admin";
 import 'dotenv/config';
 
 const port = process.env.PORT || 3000;
 const app: Express =  express();
-
-export const __filename = fileURLToPath(import.meta.url);
-export const __dirname = dirname(__filename);
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "..", "src", "views"));
@@ -30,5 +25,5 @@ app.use((req, res) => {
 });
 
 app.listen(port, () => {
-  console.log("app started at port", port);
+  console.log("app started at !port", port, );
 });

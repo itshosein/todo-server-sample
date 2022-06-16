@@ -2,6 +2,8 @@ import { Request, Response } from "express";
 import Todo from "../models/Todo";
 
 const getTodos = (req: Request, res: Response) => {
+  console.log("??????");
+  
   // console.log("main route handler", __dirname);
   // res.sendFile(path.join("views", "index.html"), { root: "./src" });
   const ip = req.headers["x-forwarded-for"] || req.socket.remoteAddress || null;
