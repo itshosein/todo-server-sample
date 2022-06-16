@@ -1,6 +1,5 @@
 const path = require("path");
-const nodeExternals = require('webpack-node-externals');
-
+const nodeExternals = require("webpack-node-externals");
 
 module.exports = {
   mode: "development",
@@ -15,8 +14,8 @@ module.exports = {
     rules: [
       {
         test: /\.jsx?$/,
-        use: 'babel-loader',
-        exclude: /node_modules/
+        use: "babel-loader",
+        exclude: /node_modules/,
       },
       {
         test: /\.tsx?$/,
@@ -26,9 +25,9 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+    extensions: [".tsx", ".ts", ".js"],
   },
   optimization: {
-    minimize: true
-  }
+    minimize: true,
+  },
 };
