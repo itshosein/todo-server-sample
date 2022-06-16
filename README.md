@@ -30,6 +30,8 @@ the app developed with these key technologies
 
 - [ExpressJs](https://expressjs.com/)
 - [Typescript](https://styled-components.com/)
+- [babel](https://babeljs.io/)
+- [Webpack](https://webpack.js.org/)
 - [Ejs](https://ejs.co/)
 
 ### Installation
