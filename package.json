@@ -4,10 +4,10 @@
   "description": "server for todo sample",
   "private": true,
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --stats-error-details",
     "serve": "webpack serve",
-    "start": "node ./dist/app.js ",
-    "start-watch": "nodemon ./dist/app.js",
+    "start": "node ./build/app.js ",
+    "start-watch": "nodemon ./build/app.js",
     "watch-ts": "tsc -w"
   },
   "engines": {
