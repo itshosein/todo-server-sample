@@ -4,7 +4,7 @@
   "description": "server for todo sample",
   "private": true,
   "scripts": {
-    "build": "mv -i -v src dist/ && webpack --stats-error-details",
+    "build": "webpack --stats-error-details",
     "serve": "webpack serve",
     "start": "node ./build/app.js ",
     "start-watch": "nodemon ./build/app.js",
