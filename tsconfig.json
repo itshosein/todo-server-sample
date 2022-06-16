@@ -1,13 +1,16 @@
 {
   "compilerOptions": {
+    "outDir": "./dist/",
+    "noImplicitAny": true,
     "allowJs": false,
     "target": "ESNext",
     "module": "ESNext",
     "isolatedModules": true,
-    "noEmit": true,
+    "noEmit": false,
     "strict": true,
     "allowSyntheticDefaultImports": true,
-    "esModuleInterop": false,
+    "esModuleInterop": true,
+    "skipLibCheck": true
   },
-  "include": ["src/"]
+  "include": ["src/**/*"]
 }

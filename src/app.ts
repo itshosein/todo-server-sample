@@ -3,8 +3,8 @@ import bodyParser from "body-parser";
 import path from "path";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
-import publicRoute from "./routes/public.js";
-import adminRoute from "./routes/admin.js";
+import publicRoute from "./routes/public";
+import adminRoute from "./routes/admin";
 import 'dotenv/config';
 
 const port = process.env.PORT || 3000;

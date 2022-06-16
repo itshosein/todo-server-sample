@@ -1,6 +1,6 @@
 import express from "express";
-import { __dirname } from "../app.js";
-import todoController from "../controllers/todo.js";
+import { __dirname } from "../app";
+import todoController from "../controllers/todo";
 
 const route = express.Router();
 
