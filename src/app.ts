@@ -25,5 +25,5 @@ app.use((req, res) => {
 });
 
 app.listen(port, () => {
-  console.log("app started at !port", port, );
+  console.log("app started at port", port, );
 });
