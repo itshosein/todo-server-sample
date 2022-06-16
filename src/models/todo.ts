@@ -49,8 +49,6 @@ export default class Todo {
   }
 
   public static getAllTodos(withTodo: (todos: Todo[]) => void) {
-    console.log(pathToFile);
-    
     let todos: Todo[] = [];
     fs.readFile(pathToFile, (err, data) => {
       if (err || !data.length) {
