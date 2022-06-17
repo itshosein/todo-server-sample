@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import Todo from "../models/Todo";
+import Todo from "../models/todo";
 
 const getTodos = (req: Request, res: Response) => {
   // res.sendFile(path.join("views", "index.html"), { root: "./src" });
