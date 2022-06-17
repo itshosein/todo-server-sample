@@ -6,8 +6,8 @@
   "scripts": {
     "build": "webpack --stats-error-details",
     "serve": "webpack serve",
-    "start": "node ./build/app.js ",
-    "start-watch": "nodemon ./build/app.js",
+    "start": "node ./dist/app.js ",
+    "start-watch": "nodemon ./dist/app.js",
     "watch-ts": "tsc -w"
   },
   "engines": {
