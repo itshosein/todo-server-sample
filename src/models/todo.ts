@@ -44,7 +44,6 @@ export default class Todo {
         desc: this.desc,
         id: this.id,
       });
-      console.log("save in model todo ", this, todos);
       fs.writeFile(pathToFile, JSON.stringify(todos), afterSave);
     });
   }
@@ -52,8 +51,6 @@ export default class Todo {
   public static getAllTodos(withTodo: (todos: Todo[]) => void) {
     let todos: Todo[] = [];
     fs.readFile(pathToFile, (err, data) => {
-      console.log("getAllTodos", err, data.toString());
-
       if (err || !data.length) {
         withTodo([]);
         return;
