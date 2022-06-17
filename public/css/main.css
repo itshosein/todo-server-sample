@@ -20,7 +20,7 @@ body {
 
 main {
   width: 100%;
-  height: calc(100vh - 350px);
+  min-height: calc(100vh - 411px);
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -86,8 +86,6 @@ main {
   justify-content: flex-start;
   align-items: center;
   margin-top: 5rem;
-  position: absolute;
-  bottom: 0;
   padding: 1rem;
 }
 .footer h2 {
