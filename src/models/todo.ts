@@ -37,20 +37,23 @@ export default class Todo {
 
   public save(afterSave: (err: Error | null) => void) {
     let todos: { id: string; title: string; desc: string }[] = [];
-    Todo.getAllTodos((todos: Todo[]) => {
-      todos = todos;
+    Todo.getAllTodos((todosFromFile: Todo[]) => {
+      todos = todosFromFile;
+      todos.push({
+        title: this.title,
+        desc: this.desc,
+        id: this.id,
+      });
+      console.log("save in model todo ", this, todos);
+      fs.writeFile(pathToFile, JSON.stringify(todos), afterSave);
     });
-    todos.push({
-      title: this.title,
-      desc: this.desc,
-      id: this.id,
-    });
-    fs.writeFile(pathToFile, JSON.stringify(todos), afterSave);
   }
 
   public static getAllTodos(withTodo: (todos: Todo[]) => void) {
     let todos: Todo[] = [];
     fs.readFile(pathToFile, (err, data) => {
+      console.log("getAllTodos", err, data.toString());
+
       if (err || !data.length) {
         withTodo([]);
         return;
@@ -63,6 +66,8 @@ export default class Todo {
 
   public static saveAll(todos: Todo[], afterSave: (err: Error | null) => void) {
     Todo.getAllTodos((savedTodo: Todo[]) => {
+      console.log();
+
       todos = [...todos, ...savedTodo];
     });
     fs.writeFile(pathToFile, JSON.stringify(todos), afterSave);
@@ -77,7 +82,10 @@ export default class Todo {
     });
   }
 
-  public static deleteTodo(id: string,deletedCallback: (isDone: boolean) => void) {
+  public static deleteTodo(
+    id: string,
+    deletedCallback: (isDone: boolean) => void
+  ) {
     let todosDeleted: Todo[] | null = null;
     Todo.getAllTodos((todos) => {
       if (todos?.length) {
