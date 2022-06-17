@@ -8,7 +8,7 @@
 
 :root {
   --dark-blue: #021127;
-  --dark-red: #A31420;
+  --dark-red: #a31420;
 }
 
 body {
@@ -20,6 +20,7 @@ body {
 
 main {
   width: 100%;
+  height: calc(100vh - 350px);
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -60,12 +61,12 @@ main {
   background-color: var(--dark-red);
 }
 
-.header__nav ul a  {
+.header__nav ul a {
   text-decoration: none;
   color: white;
 }
 
-.header__nav ul a:hover li{
+.header__nav ul a:hover li {
   color: var(--dark-blue);
 }
 
@@ -75,7 +76,6 @@ main {
 .header__nav ul a.active li:hover {
   color: var(--dark-blue);
 }
-
 
 .footer {
   width: 100%;
