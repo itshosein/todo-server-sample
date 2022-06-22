@@ -5,10 +5,9 @@
   "private": true,
   "scripts": {
     "build": "webpack --stats-error-details",
-    "serve": "webpack serve",
+    "build-watch": "webpack serve",
     "start": "node ./dist/app.js ",
-    "start-watch": "nodemon ./dist/app.js",
-    "watch-ts": "tsc -w"
+    "start-watch": "nodemon ./dist/app.js"
   },
   "engines": {
     "node": "16.13.1"
