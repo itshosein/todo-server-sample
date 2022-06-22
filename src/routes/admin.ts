@@ -9,5 +9,6 @@ route.post("/add-todo", todoController.saveTodo);
 
 route.get("/delete-todo/:id", todoController.deleteTodo);
 
+route.get("/edit-todo/:id", todoController.editTodo);
 
 export default route;
