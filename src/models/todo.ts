@@ -63,8 +63,6 @@ export default class Todo {
 
   public static saveAll(todos: Todo[], afterSave: (err: Error | null) => void) {
     Todo.getAllTodos((savedTodo: Todo[]) => {
-      console.log();
-
       todos = [...todos, ...savedTodo];
     });
     fs.writeFile(pathToFile, JSON.stringify(todos), afterSave);
