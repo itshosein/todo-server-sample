@@ -11,7 +11,6 @@ const getTodos = (req: Request, res: Response) => {
       todos: todos,
     });
   });
-  
 };
 
 const getAddTodoPage = (req: Request, res: Response) => {
@@ -41,19 +40,62 @@ const saveTodo = (req: Request, res: Response) => {
 };
 
 const deleteTodo = (req: Request, res: Response) => {
-  console.log(req.params);
   if (req.params.id) {
-    Todo.deleteTodo(req.params.id,(isDone) =>{
+    Todo.deleteTodo(req.params.id, (isDone) => {
       if (isDone) {
         res.redirect("/");
       }
     });
   }
-}
+};
+
+const editTodo = (req: Request, res: Response) => {
+  console.log("editTodo" ,req.body);
+  
+  Todo.getAllTodos(todos => {
+    let todoEdited = todos.filter(todo => {
+      return todo.id === req.body.todoId;
+    })[0];
+    console.log("todoEdited",todoEdited);
+    
+    todoEdited.title = req.body.todoTitle;
+    todoEdited.desc = req.body.todoDescription;
+    todos = todos.map(todo => {
+      if (todo.id === req.body.id) {
+        return todoEdited;
+      }
+      return todo;
+    });
+    Todo.saveAll(todos,(e) => {
+      if (e) {
+        console.log(e);
+        return;
+      }
+      res.redirect("/");
+    });
+  })
+};
+
+const getEditTodoPage = (req: Request, res: Response) => {
+  if (req.params.id) {
+    Todo.getTodoById(req.params.id, (todo) => {
+      console.log("getEditTodoPage" ,todo);
+      
+      res.render("add-todo", {
+        pageTitle: "add todos",
+        path: "/admin/add-todo",
+        submitError: req.query.submitError,
+        editTodo: todo,
+      });
+    });
+  }
+};
 
 export default {
   getTodos,
   getAddTodoPage,
   saveTodo,
-  deleteTodo
+  deleteTodo,
+  getEditTodoPage,
+  editTodo,
 };
