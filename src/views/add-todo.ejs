@@ -4,14 +4,20 @@
   <body>
     <%- include('includes/nav.ejs') %> 
     <main>
-      <form action="/admin/add-todo" method="POST"  class="add-todo__form">
+      <form action="<%= editTodo ? "/admin/edit-todo" : "/admin/add-todo"%>" method="POST"  class="add-todo__form">
         <div class="main__div__title">
+          <input 
+          name="todoId"
+          value="<%= editTodo ? editTodo.id : "" %>"
+          style="display: none;"
+          />
           <label for="todo" class="main__div__title__label">Todo Title:</label>
           <input
             id="todo"
             type="text"
             name="todoTitle"
             class="main__div__title__input"
+            value="<%= editTodo ? editTodo.title : ""%>"
           />
         </div>
         <div class="main__div__description">
@@ -24,10 +30,12 @@
             rows="2"
             class="main__div__description__textarea"
             id="todoDescription"
-          ></textarea>
+          ><%= editTodo ? editTodo.desc : ""%></textarea>
+
         </div>
         <p class="main__div__error-message"><%= submitError %> </p>
         <button type="submit">Add todo</button>
       </form>
+
     </main>
     <%- include('includes/footer.ejs') %> 
