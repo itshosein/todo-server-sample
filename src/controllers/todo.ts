@@ -50,14 +50,10 @@ const deleteTodo = (req: Request, res: Response) => {
 };
 
 const editTodo = (req: Request, res: Response) => {
-  console.log("editTodo" ,req.body);
-  
   Todo.getAllTodos(todos => {
     let todoEdited = todos.filter(todo => {
       return todo.id === req.body.todoId;
     })[0];
-    console.log("todoEdited",todoEdited);
-    
     todoEdited.title = req.body.todoTitle;
     todoEdited.desc = req.body.todoDescription;
     todos = todos.map(todo => {
@@ -79,8 +75,6 @@ const editTodo = (req: Request, res: Response) => {
 const getEditTodoPage = (req: Request, res: Response) => {
   if (req.params.id) {
     Todo.getTodoById(req.params.id, (todo) => {
-      console.log("getEditTodoPage" ,todo);
-      
       res.render("add-todo", {
         pageTitle: "add todos",
         path: "/admin/add-todo",
